@@ -1,6 +1,4 @@
-<?php
-include 'partials/routes.php';
-include 'partials/header.php';
+<?php include 'partials/header.php';
 include 'partials/nav.php'; ?>
   <!-- Page Content -->
   <section>
@@ -62,11 +60,10 @@ include 'partials/nav.php'; ?>
   </div>
 
   <div class="container">
-  <form id="signupForm">
+  <form  method="post" action="../resources/bouncer.php">
     <!-- We have to set the method and action to the php file-->
     <h3 class="display-4">Customer Registration</h3>
 
-    <form>
       <div class="form-row">
         <div class="form-group col-6">
           <label for="cust-name">First Name</label>
@@ -85,6 +82,8 @@ include 'partials/nav.php'; ?>
         <label for="exampleFormControlTextarea1">Message</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
+         <button type="submit" class="btn btn-primary" id="contact-form-submit">Sign in</button>
+            <button type="reset" class="btn btn-primary" id="contact-form-reset">Reset</button>
     </form>
   <!-- end form -->
 <?php include 'partials/footer.php' ?>

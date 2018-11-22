@@ -1,5 +1,4 @@
 <?php
-// var_dump($_SERVER["SCRIPT_NAME"]);
 	switch ($_SERVER["SCRIPT_NAME"]) {
 		case "/WebAppAssignment/register.php":
 			$CURRENT_PAGE = "Register";

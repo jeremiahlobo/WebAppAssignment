@@ -24,3 +24,8 @@ body{
 h5 {
   font-weight: 700;
 }
+
+.display-image img{
+    width: 50%;
+    height: 500px;
+}
