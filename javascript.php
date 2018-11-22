@@ -12,6 +12,7 @@ include 'partials/nav.php'; ?>
       <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
   </div>
 </div>
+
 <div class="container-fuild">
   <div class="row">
     <div class="card" style="width: 18rem;">

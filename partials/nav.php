@@ -7,7 +7,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-
       <ul class="navbar-nav ml-auto">
         <li class="nav-item <?php ($CURRENT_PAGE == "Index")? print('active') : '';?>">
           <a class="nav-link" href="index.php">Home
