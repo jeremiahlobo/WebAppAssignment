@@ -1,5 +1,4 @@
-<?php include 'partials/routes.php';
-include 'partials/header.php';
+<?php include 'partials/header.php';
 include 'partials/nav.php'; ?>
 <!-- Page Content -->
 <section>

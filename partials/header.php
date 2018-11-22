@@ -1,3 +1,4 @@
+<?php include 'routes.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>text</title>
+    <title><?php print($PAGE_TITLE); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/reset.css" rel="stylesheet">
