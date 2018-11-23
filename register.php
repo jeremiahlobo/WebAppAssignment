@@ -62,9 +62,10 @@ include 'partials/nav.php'; ?>
 </div>
 
   <div class="container">
+  <h3 class="display-4">Customer Registration</h3>
   <form id="signupForm">
+    <p class="display-tool-tip"></p>
     <!-- We have to set the method and action to the php file-->
-    <h3 class="display-4">Customer Registration</h3>
     <div class="form-row">
       <div class="form-group col-6">
         <label for="cust-name">First Name</label>
@@ -96,7 +97,7 @@ include 'partials/nav.php'; ?>
        <input type="text" class="form-control" id="cust-city" name="custcity">
      </div>
      <div class="form-group col-sm-4 col-md-4">
-       <label for="cust-state">State</label>
+       <label for="cust-state">Province</label>
        <select id="cust-state" class="form-control" name="custstate">
          <option selected>Choose...</option>
          <option value="AB">AB</option>
@@ -104,10 +105,11 @@ include 'partials/nav.php'; ?>
      </div>
      <div class="form-group col-sm-4 col-md-2">
        <label for="cust-postal-ca">Postal Code</label>
-       <input type="text" class="form-control" id="cust-postal-ca" name="custpostalcode">
+       <input type="text" class="form-control" id="cust-postal-ca" name="custpostalcode" maxlength="6">
      </div>
    </div>
-   <button type="submit" class="btn btn-primary">Sign in</button>
+   <button type="submit" class="btn btn-primary" id="signup-form-signup">Sign in</button>
+   <button type="reset" class="btn btn-primary" id="signup-form-reset">Reset</button>
   </form>
   <!-- end form -->
 <?php include 'partials/footer.php' ?>

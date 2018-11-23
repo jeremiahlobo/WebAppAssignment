@@ -7,6 +7,7 @@
    /* This page prints the form field names and values
    that were received
     */
+   print('<a href="javascript:history.go(-1)">Go Back</a>');
    print("<h1>Your form sent the following values:</h1>");
    print("<table border='1'><tr><th>FIELDNAME</th><th>VALUE</th></tr>");
    //if ($_GET)

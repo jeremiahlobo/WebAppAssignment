@@ -29,3 +29,24 @@ h5 {
     width: 50%;
     height: 500px;
 }
+label.error {
+    color: maroon;
+}
+.display-tool-tip {
+  color:blue;
+}
+
+.card-captor{
+  background-color: #e9ecef;
+  border: none;
+  /* border-radius: none; */
+}
+.card-img-overlay{
+  padding-left: 2em;
+}
+
+.fluid-design, .jumbo-design{
+  /* padding-left: 0px !important; */
+  /* padding-right: 0px !important; */
+  /* margin-bottom: 0px !important; */
+}

@@ -60,30 +60,34 @@ include 'partials/nav.php'; ?>
   </div>
 
   <div class="container">
-  <form  method="post" action="../resources/bouncer.php">
+
     <!-- We have to set the method and action to the php file-->
     <h3 class="display-4">Customer Registration</h3>
-
+<form  id="contact-form" method="post" action="resources/bouncer.php">
       <div class="form-row">
         <div class="form-group col-6">
           <label for="cust-name">First Name</label>
-          <input type="text" class="form-control" id="cust-name" name="custname" placeholder="Frist Name">
+          <input type="text" class="form-control" id="contact-name"
+          name="contactname" placeholder="Frist Name">
         </div>
         <div class="form-group col-6">
           <label for="cust-last-name">Last Name</label>
-          <input type="text" class="form-control" id="cust-last-name" name="custlastname" placeholder="Last Name">
+          <input type="text" class="form-control" id="contact-last-name"
+          name="contactlastname" placeholder="Last Name">
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="contact-email">Email</label>
+        <input type="email" class="form-control" id="contact-email"
+        name="contactemail" placeholder="name@example.com">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Message</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="contact-message">Message</label>
+        <textarea class="form-control" id="contact-message"
+        name="contactMessage" rows="3"></textarea>
       </div>
-         <button type="submit" class="btn btn-primary" id="contact-form-submit">Sign in</button>
-            <button type="reset" class="btn btn-primary" id="contact-form-reset">Reset</button>
+        <button type="submit" class="btn btn-primary" id="contact-form-submit">Sign in</button>
+        <button type="reset" class="btn btn-primary" id="contact-form-reset">Reset</button>
     </form>
   <!-- end form -->
 <?php include 'partials/footer.php' ?>

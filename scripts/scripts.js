@@ -8,9 +8,9 @@ jQuery(function($){
 			travelImages[1].src = "images/bahamas.jpg";
 			travelImages[2] = new Image();
 			travelImages[2].src = "images/houses.jpg";
+
 // Navigation
 	$(window).scroll(function(){
-
 		if( $(this).scrollTop() >= 680 ) {
       $('.navbar').removeClass('bg-transparent');
       $('.navbar').addClass('bg-dark');
@@ -18,14 +18,14 @@ jQuery(function($){
       $('.navbar').removeClass('bg-dark');
       $('.navbar').addClass('bg-transparent');
     }
-
 	});
 
-	//from handling
+	//from confirmation
 	$("#contact-form-submit").click(function(event){
 		return confirm("sending form, are you sure?");
 		this.reset();
 	});
+
 	$("#contact-form-reset").click(function(event){
 		return confirm("This form's field will be resetted. Is that OK?");
 	});
@@ -35,15 +35,19 @@ jQuery(function($){
 	$('.display-image').hide();
 	for (var i = 0; i < names.length; i++) {
 		$('.list-description').append( '<li data-linkid='+i+'>' + names[i] + '</li>');
-		// $('.list-description').append( '<li>' + names[i] + '</li>');
 	}
 	$('.list-description > li').hover(function(){
 		id = $(this).data('linkid');
 		$('.display-image').html('<a href="'+picslinks[id]+' target="_blank""><img src=' + travelImages[id].src + ' /></a>').css("display", "block");
 	});
 
+	//Display tool tip above the form
+	$('#signupForm div > input').focus(function(){
+		$('.display-tool-tip').html( 'Enter your '+$(this).prev().text());
+	});
 
-
-
+	$('#signupForm div > input').blur(function(){
+		$('.display-tool-tip').html('');
+	});
 
 });
