@@ -37,7 +37,7 @@ label.error {
 }
 
 .card-captor{
-  background-color: #e9ecef;
+  background-color: #e9ecef !important;
   border: none;
   /* border-radius: none; */
 }

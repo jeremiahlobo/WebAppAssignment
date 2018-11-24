@@ -25,14 +25,32 @@ include 'partials/nav.php'; ?>
         </div>
 
       <div class="col-lg-6 col-md-12 col-12 fluid-design">
-        <div class="card bg-dark text-white card-captor">
-          <img class="card-img" src="images/background-image-beautiful-blur-414586.jpg" alt="Card image">
-            <div class="card-img-overlay">
-              <h5 class="card-title">Good Evening</h5>
+        <?php
+        $hour = date("G") +16;
+        ?>
+        <div class="card  card-captor text-whiter">
+              <?php
+              if ($hour >= 0 and $hour < 12)
+              {
+                print('<img class="card-img" src="images\clouds-hd-wallpaper-landscape-67832.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Good Morning!</h5>');
+              } elseif ($hour >= 12 and $hour < 18)
+              {
+                print('<img class="card-img" src="images\background-image-beautiful-blur-414586.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Good Afternoon!</h5>');
+              } else
+              {
+                print('<img class="card-img" src="images\dawn-dusk-grass-86697.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">, Good Evening!</h5>');
+              }
+              ?>
             </div>
           </div>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 <!-- </div> -->
