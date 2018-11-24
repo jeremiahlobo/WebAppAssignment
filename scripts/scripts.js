@@ -12,10 +12,12 @@ jQuery(function($){
 // Navigation
 	$(window).scroll(function(){
 		if( $(this).scrollTop() >= 680 ) {
+			$('.navbar-brand img').attr('src', 'images/logo/tr-color-white.png');
       $('.navbar').removeClass('bg-transparent');
       $('.navbar').addClass('bg-dark');
 		}else {
       $('.navbar').removeClass('bg-dark');
+			$('.navbar-brand img').attr('src', 'images/logo/tr-white.png');
       $('.navbar').addClass('bg-transparent');
     }
 	});

@@ -16,6 +16,18 @@
 			$CURRENT_PAGE = "PHP";
 			$PAGE_TITLE = "More PHP";
 			break;
+		case "/WebAppAssignment/login.php":
+				$CURRENT_PAGE = "login";
+				$PAGE_TITLE = "Login";
+				break;
+		case "/WebAppAssignment/user-dasboard.php":
+					$CURRENT_PAGE = "dashboard";
+					$PAGE_TITLE = "dashboard";
+					break;
+		case "/WebAppAssignment/agent-dashboard.php":
+				$CURRENT_PAGE = "dashboard";
+				$PAGE_TITLE = "dashboard";
+				break;
 		default:
 			$CURRENT_PAGE = "Index";
 			$PAGE_TITLE = "Welcome to Travel Experts!";

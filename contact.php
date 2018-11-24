@@ -63,7 +63,7 @@ include 'partials/nav.php'; ?>
 
     <!-- We have to set the method and action to the php file-->
     <h3 class="display-4">Customer Registration</h3>
-<form  id="contact-form" method="post" action="resources/bouncer.php">
+  <form  id="contact-form" method="post" action="resources/bouncer.php">
       <div class="form-row">
         <div class="form-group col-6">
           <label for="cust-name">First Name</label>

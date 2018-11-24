@@ -26,25 +26,32 @@ include 'partials/nav.php'; ?>
 
       <div class="col-lg-6 col-md-12 col-12 fluid-design">
         <?php
-        $hour = date("G") +16;
+        //@credits https://stackoverflow.com/questions/470617/how-to-get-the-current-date-and-time-in-php
+        //@credits https://stackoverflow.com/questions/2505681/timezone-conversion-in-php
+        date_default_timezone_set('America/Edmonton');
+        $datetime = new DateTime('G');
+        $timezone = date_default_timezone_get();
+        echo "<h5>The current timezone is " . $timezone."</h5>";
+        $hour = $datetime->format('H');
+        $timeNow = $datetime->format('d-m-Y H:i:s A')
+
         ?>
         <div class="card  card-captor text-whiter">
               <?php
               if ($hour >= 0 and $hour < 12)
               {
                 print('<img class="card-img" src="images\clouds-hd-wallpaper-landscape-67832.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Good Morning!</h5>');
+              <h5 class="card-title">'.$timeNow.' Good Morning!</h5>');
               } elseif ($hour >= 12 and $hour < 18)
               {
                 print('<img class="card-img" src="images\background-image-beautiful-blur-414586.jpg" alt="Card image">
                 <div class="card-img-overlay">
-                  <h5 class="card-title">Good Afternoon!</h5>');
+                  <h5 class="card-title">'.$timeNow.' Good Afternoon!</h5>');
               } else
               {
                 print('<img class="card-img" src="images\dawn-dusk-grass-86697.jpg" alt="Card image">
                 <div class="card-img-overlay">
-                  <h5 class="card-title">, Good Evening!</h5>');
+                  <h5 class="card-title">'.$timeNow.' Good Evening!</h5>');
               }
               ?>
             </div>
