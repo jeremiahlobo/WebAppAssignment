@@ -11,7 +11,7 @@ class Users
     private $useremail;
     private $email;
 
-    public function __construct($config, $username, $useremail, $useremail)
+    public function __construct($config, $username, $useremail)
     {
     	$this->userDBconn = Connection::make($config);
     }

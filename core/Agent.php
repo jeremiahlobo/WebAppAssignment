@@ -1,4 +1,6 @@
 <?php
+include "database/Connection.php";
+require 'bootstrap.php';
 	class Agent
 	{
 		private $AgentId;
@@ -33,9 +35,9 @@
 			$this->AgentId = $AgentId;
 		}
 
-    public function setAgtFirstName()
+    public function setAgtFirstName($AgtFirstName)
 		{
-			return $this->AgtFirstName;
+			return $this->AgtFirstName = $AgtFirstName;
 		}
 		public function getAgtFirstName()
 		{

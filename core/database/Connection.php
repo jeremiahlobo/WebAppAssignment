@@ -1,6 +1,6 @@
 <?php
 class Connection {
-    
+
     public static function make($config)
     {
     	try {
@@ -14,5 +14,5 @@ class Connection {
 		}catch (PDOException $e){
 			die($e->getMessage());
 		}
-    }
+  }
 }

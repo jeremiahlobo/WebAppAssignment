@@ -5,10 +5,10 @@
 
 return [
 	'database' => [
-		'name' => 'Enjin',
-		'username' => 'root',
-		'password' => 'root',
-		'connection' => 'mysql:host=127.0.0.1:8889',
+		'name' => 'travelexperts',
+		'username' => 'Jeremiah',
+		'password' => 'pass123',
+		'connection' => 'mysql:host=127.0.0.1',
 		'options' => []
 	]
 ];

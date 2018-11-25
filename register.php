@@ -107,6 +107,13 @@ include 'partials/nav.php'; ?>
        <label for="cust-postal-ca">Postal Code</label>
        <input type="text" class="form-control" id="cust-postal-ca" name="custpostalcode" maxlength="6">
      </div>
+     <div class="form-group col-sm-4 col-md-4">
+       <label for="cust-state">Agent</label>
+       <select id="cust-state" class="form-control" name="custstate">
+         <option selected>Choose...</option>
+         <option value="AB">AB</option>
+       </select>
+     </div>
    </div>
    <button type="submit" class="btn btn-primary" id="signup-form-signup">Sign in</button>
    <button type="reset" class="btn btn-primary" id="signup-form-reset">Reset</button>
