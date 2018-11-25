@@ -1,18 +1,20 @@
 <?php
 
-// include "database/Connection.php";
-// require 'bootstrap.php';
+include "database/Connection.php";
+require 'bootstrap.php';
 
 class Users
 {
     protected $userDBconn;
     protected $uid;
+    private $username;
+    private $useremail;
+    private $email;
 
-    public function __construct($config)
+    public function __construct($config, $username, $useremail, $useremail)
     {
     	$this->userDBconn = Connection::make($config);
     }
-
 
     public function setUserID($uid)
     {
@@ -23,6 +25,24 @@ class Users
     {
         return $this->userid;
     }
+    public function setUserName($uid)
+    {
+        return $this->userid = $uid;
+    }
+
+    public function getUserName()
+    {
+        return $this->userid;
+    }
+    public function setUserEmail($uid)
+    {
+        return $this->userid = $uid;
+    }
+
+    public function getUserEmail()
+    {
+        return $this->userid;
+    }
 
     public function register($clean)
     {
@@ -30,18 +50,18 @@ class Users
        {
            $newPass = password_hash($clean['password'], PASSWORD_DEFAULT);
 
-           $stmt = $this->userDBconn->prepare('INSERT INTO Users(username,email,password) 
+           $stmt = $this->userDBconn->prepare('INSERT INTO Users(username,email,password)
                                                        VALUES(:uname,:umail,:upass)');
            $stmt->bindparam(':uname', $clean['username']);
            $stmt->bindparam(':umail', $clean['email']);
-           $stmt->bindparam(':upass', $newPass);            
+           $stmt->bindparam(':upass', $newPass);
            $stmt->execute();
-           return $stmt; 
+           return $stmt;
        }
        catch(PDOException $e)
        {
            echo $e->getMessage();
-       }    
+       }
     }
 
     public function verifylogin($clean)
@@ -72,13 +92,13 @@ class Users
 
     public static function loggedin()
     {
-      return $_SESSION['enjin_session'];
+      return $_SESSION['TR_session'];
     }
 
     public static function logout()
     {
       session_destroy();
-      unset($_SESSION['enjin_session']);
+      unset($_SESSION['TR_session']);
       unset($_SESSION['username']);
       return true;
     }
