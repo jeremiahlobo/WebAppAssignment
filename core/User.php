@@ -1,6 +1,4 @@
 <?php
-
-include "database/Connection.php";
 require 'bootstrap.php';
 
 class Users
