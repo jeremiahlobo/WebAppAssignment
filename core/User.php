@@ -48,13 +48,13 @@ class Users
        {
            $newPass = password_hash($clean['password'], PASSWORD_DEFAULT);
 
-           $stmt = $this->userDBconn->prepare('INSERT INTO Users(username,email,password)
-                                                       VALUES(:uname,:umail,:upass)');
-           $stmt->bindparam(':uname', $clean['username']);
-           $stmt->bindparam(':umail', $clean['email']);
-           $stmt->bindparam(':upass', $newPass);
+           $stmt = $this->userDBconn->prepare('INSERT INTO users(name,email,password)
+                                                       VALUES(:username,:useremail,:userpass)');
+           $stmt->bindparam(':username', $clean['username']);
+           $stmt->bindparam(':useremail', $clean['email']);
+           $stmt->bindparam(':userpass', $newPass);
            $stmt->execute();
-           return $stmt;
+           return true;
        }
        catch(PDOException $e)
        {
@@ -66,8 +66,8 @@ class Users
     {
     	try
        {
-       	  $stmt = $this->userDBconn->prepare('SELECT * FROM Users WHERE username = :uname');
-          $stmt->bindparam(':uname', $clean['username']);
+       	  $stmt = $this->userDBconn->prepare('SELECT * FROM users WHERE name = :username');
+          $stmt->bindparam(':username', $clean['username']);
           $stmt->execute();
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -90,7 +90,8 @@ class Users
 
     public static function loggedin()
     {
-      return $_SESSION['TR_session'];
+      session_start();
+      return $_SESSION['TR_session'] = 'loggedin';
     }
 
     public static function logout()

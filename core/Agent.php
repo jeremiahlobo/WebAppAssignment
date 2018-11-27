@@ -1,29 +1,33 @@
 <?php
-include "database/Connection.php";
 require 'bootstrap.php';
+
 	class Agent
 	{
+    protected $userDBconn;
 		private $AgentId;
 		private $AgtFirstName;
 		private $AgtLastName;
 		private $AgtMiddleInital;
 		private $AgtBusPhone;
-		private $AgttEmail;
+		private $AgtEmail;
     private $AgencyId;
     private $AgtPosition;
 
-		public function __construct($AgentId, $AgtFirstName, $AgtLastName, $AgtMiddleInital, $AgtBusPhone, $AgttEmail, $AgencyId, $AgtPosition )
+		public function __construct($config)
 		{
-			$this->AgentId = $AgentId;
-      $this->AgentId = $AgtFirstName;
-      $this->AgentId = $AgtLastName;
-      $this->AgentId = $AgtMiddleInital;
-      $this->AgentId = $AgtBusPhone;
-      $this->AgentId = $AgttEmail;
-      $this->AgentId = $AgentId;
-      $this->$AgencyId = $AgencyId;
-      $this->AgtPosition = $AgtPosition
+      $this->userDBconn = Connection::make($config);
+			// $this->AgentId = $AgentId;
+      // $this->AgtFirstName = $AgtFirstName;
+      // $this->AgtLastName = $AgtLastName;
+      // $this->AgtMiddleInital = $AgtMiddleInital;
+      // $this->AgtBusPhone = $AgtBusPhone;
+      // $this->AgtEmail = $AgtEmail;
+      // $this->$AgencyId = $AgencyId;
+      // $this->AgtPosition = $AgtPosition;
 		}
+		// , $AgtFirstName, $AgtMiddleInital,
+    //                             $AgtLastName, $AgtBusPhone,
+    //                             $AgtEmail, $AgencyId, $AgtPosition
 
 		public function getAgentId()
 		{
@@ -62,19 +66,19 @@ require 'bootstrap.php';
 		{
 			return $this->AgtBusPhone;
 		}
-    public function setAgtBusPhone($AgtEmail)
+    public function setAgtEmail($AgtEmail)
 		{
-			$this->AgtBusPhone = $AgtBusPhone;
+			$this->AgtEmail = $AgtEmail;
 		}
-		public function getAgtBusPhone($AgtBusPhone)
+		public function getAgtEmail($AgtEmail)
 		{
-			return $this->AgtBusPhone;
+			return $this->AgtEmail;
 		}
     public function setAgtPosition($AgtPosition)
     {
       $this->AgtPosition = $AgtPosition;
     }
-    public function setAgtPosition($AgtPosition)
+    public function getAgtPosition($AgtPosition)
     {
       $this->AgtPosition;
     }
@@ -84,19 +88,7 @@ require 'bootstrap.php';
     }
     public function getAgencyId()
     {
-      $this->AgtAgencyId
-    }
-    public function getAgtBusPhone($AgtBusPhone)
-    {
-      $this->AgtBusPhone = $AgtBusPhone;
-    }
-    public function setAgtBusPhone($AgtBusPhone)
-    {
-      $this->AgtBusPhone = $AgtBusPhone;
-    }
-    public function getAgtBusPhone($AgtBusPhone)
-    {
-      $this->AgtBusPhone = $AgtBusPhone;
+      $this->AgtAgencyId;
     }
 
     public function toString($ibjAgent){
@@ -104,6 +96,40 @@ require 'bootstrap.php';
       //get
       //return string
     }
+    public function addAgent($clean)
+    {
+       try
+       {
+
+           $stmt = $this->userDBconn->prepare('INSERT INTO agents(AgtFirstName,AgtMiddleInitial,AgtLastName, AgtBusPhone,AgtEmail, AgtPosition,AgencyId)VALUES(:agentfirstname,:middleintial,:agentlastname, :busphone,:agentemail,:typeagent,:agencyId)');
+           $stmt->bindparam(':agentfirstname', $clean['username']);
+           $stmt->bindparam(':middleintial', $clean['middleintial']);
+					 $stmt->bindparam(':agentlastname', $clean['agentlastname']);
+					 $stmt->bindparam(':busphone', $clean['busphone']);
+           $stmt->bindparam(':agentemail', $clean['agentemail']);
+           $stmt->bindparam(':typeagent', $clean['typeagent']);
+					 $stmt->bindparam(':agencyId', $clean['agencyId']);
+           $stmt->execute();
+           return true;
+       }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+    }
+		public function allAgents()
+		{
+			 try
+			 {
+					 $stmt = $this->userDBconn->prepare('SELECT AgtFirstName,AgtMiddleInitial,AgtLastName,AgtBusPhone,AgtEmail, AgtPosition FROM agents');
+					 $stmt->execute();
+					 return $stmt->fetchAll();
+			 }
+			 catch(PDOException $e)
+			 {
+					 echo $e->getMessage();
+			 }
+		}
 
 	}
 ?>

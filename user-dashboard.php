@@ -1,34 +1,12 @@
 <?php
 include 'php/variables.php';
 include 'partials/header.php';
+session_start();
 ?>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  All Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  All Agents
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <?php include 'partials/dashboard-nav.php';?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -36,12 +14,22 @@ include 'partials/header.php';
           </div>
 
           <h2>Agent Registration</h2>
-          <form  id="contact-form" method="post" action="#">
+              <?php if (isset($_SESSION['success'])){ ?>
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><?php printf($_SESSION['success'])?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php }else {
+              echo '';
+            }?>
+          <form  id="contact-form" method="post" action="controllers/registerAgents.php">
               <div class="form-row">
                 <div class="form-group col-4">
                   <label for="first-name">First Name</label>
                   <input type="text" class="form-control" id="first-name"
-                  name="firstname" placeholder="Frist Name">
+                  name="agentfirstname" placeholder="Frist Name">
                 </div>
                 <div class="form-group col-4">
                   <label for="middle-intial">Middle Intials</label>
@@ -62,8 +50,8 @@ include 'partials/header.php';
                   </div>
 
                   <div class="form-group col-6">
-                    <label for="bus-phone">Phone</label>
-                    <input type="email" class="form-control" id="bus-phone"
+                    <label for="bus-phone">Business Phone</label>
+                    <input type="text" class="form-control" id="bus-phone"
                     name="busphone" maxlength="9" placeholder="(403) 123-1424">
                   </div>
                 </div>
@@ -77,8 +65,16 @@ include 'partials/header.php';
                       <option value="Intermediate Agent">Intermediate Agent </option>
                     </select>
                   </div>
+                  <div class="form-group col-sm-4 col-md-4">
+                    <label for="agencyId">Agency</label>
+                    <select id="agencyId" class="form-control" name="agencyId">
+                      <option selected>Choose...</option>
+                      <option value="1">1155 8th Ave SW, Calgary</option>
+                      <option value="2">110 Main Street, Okotoks </option>
+                    </select>
+                  </div>
                 </div>
-              <button type="submit" class="btn btn-primary" id="contact-form-submit">Sign in</button>
+              <button type="submit" class="btn btn-primary" name="add-agent" id="contact-form-submit">Add Agent</button>
               <button type="reset" class="btn btn-primary" id="contact-form-reset">Reset</button>
             </form>
         </main>

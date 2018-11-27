@@ -1,6 +1,5 @@
 <?php
-
-	function diedump ($data)
+	function dd ($data)
 	{
 		echo '<pre>';
 		var_dump($data);

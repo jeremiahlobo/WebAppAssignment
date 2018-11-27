@@ -1,9 +1,9 @@
 <?php
-include "database/Connection.php";
 require 'bootstrap.php';
 
-	class Customers
+	class Customer
 	{
+		protected $userDBconn;
 		private $CustomerId;
 		private $CustFirstName;
 		private $CustLastName;
@@ -16,25 +16,11 @@ require 'bootstrap.php';
     private $CustBusPhone;
     private $CustEmail;
     private $AgentId;
-    protected $userDBconn;
 
-		public function __construct($userDBconn, $CustomerId, $CustFirstName, $CustLastName,
-    $CustAddress, $CustCity, $CustProv, $CustPostal, $CustCountry,
-    $CustHomePhone, $CustBusPhone, $CustEmail, $AgentId )
+
+		public function __construct($config)
 		{
-			$this->CustomerId = $CustomerId;
-      $this->CustFirstName = $CustFirstName;
-      $this->CustLastName = $CustLastName;
-      $this->CustAddress = $CustAddress;
-      $this->CustCity = $CustCity;
-      $this->CustProv = $CustProv;
-      $this->CustPostal = $CustPostal;
-      $this->CustCountry = $CustPostal;
-      $this->CustHomePhone = $CustHomePhone;
-      $this->CustBusPhone = $CustBusPhone;
-      $this->CustEmail = $CustEmail;
-      $this->AgentId = $AgentId;
-
+			  $this->userDBconn = Connection::make($config);
       }
 
 		public function getCustomerId()
@@ -89,7 +75,7 @@ require 'bootstrap.php';
     {
       $this->CustPostal = $CustPostal;
     }
-    public function setCustPostal($CustPostal)
+    public function getCustPostal($CustPostal)
     {
       $this->CustPostal;
     }
@@ -99,7 +85,7 @@ require 'bootstrap.php';
     }
     public function getAgencyId()
     {
-      $this->getAgencyId
+      $this->getAgencyId;
     }
     public function setCusCity($CustCity)
     {
@@ -109,32 +95,14 @@ require 'bootstrap.php';
     {
       $this->CusCity;
     }
-    public function setCustPostal($CustPostal)
-    {
-      $this->CustPostal = $CusPostal;
-    }
-    public function getCustPostal($CustPostal)
-    {
-      $this->CustPostal;
-    }
     public function setCustCountry($CustCountry)
     {
       $this->CustCountry = $CustCountry;
     }
-    public function getCustPostal($CustPostal)
+    public function getCustCountry($CustPostal)
     {
       $this->CustCountry;
     }
-
-    public function setCustCountry($CustCountry)
-    {
-      $this->CustCountry = $CustCountry;
-    }
-    public function getCustPostal($CustPostal)
-    {
-      $this->CustCountry;
-    }
-
     public function setCustHomePhone($CustHomePhone)
     {
       $this->CustHomePhone = $CustHomePhone;
@@ -143,12 +111,30 @@ require 'bootstrap.php';
     {
       $this->CustHomePhone;
     }
-
+		public function setCustProv($CustProv)
+		{
+			$this->CustProv = $CustProv;
+		}
+		public function getCustProv($CustProv)
+		{
+			$this->CustProv;
+		}
     public function toString($ibjAgent){
       //set
       //get
       //return string
     }
+		public function allCustomers(){
+			try
+			{
+					$stmt = $this->userDBconn->prepare('SELECT CustFirstName,CustLastName,CustAddress,CustCity, CustProv, CustPostal, CustCountry, CustHomePhone,CustBusPhone, CustEmail FROM customers');
+					$stmt->execute();
+					return $stmt->fetchAll();
+			}
+			catch(PDOException $e)
+			{
+					echo $e->getMessage();
+			}
+		}
 
 	}
-?>
